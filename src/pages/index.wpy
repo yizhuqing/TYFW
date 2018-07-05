@@ -1,19 +1,41 @@
+<style>
+  
+  /*操作区域*/
+  .operation-box{
+    background-color: #FFFCFC;
+    margin-bottom: 20rpx;
+    padding-top:400rpx;
+    padding-bottom: 35rpx;
+    border-bottom: $border;
 
+  }
+   .operation-box image{
+      height: 90rpx;
+      width: 90rpx;
+    }
+  .loading{width:100%;height:500px}
+</style>
 <template>
 <view class="page">
-        <view class="sys"  @tap="scan">
+      <image src="../images/loading.gif" wx:if="{{!loaded}}" class="loading"></image>
+      <view class="operation-box"  wx:if="{{loaded}}">
+      <view class="operation-row row-around" >
+        <view class="operation-row column-center"  @tap="scan">
+          <image src="/images/scan.png"/>
           <text>扫一扫</text>
         </view>
-        <view class="fw"  @tap="fw">
+        <view class="operation-row column-center"  @tap="fw">
+          <image src="/images/fw.png"/>
           <text>防伪验真</text>
         </view>
+       </view>
+       </view>
   </view>
 </template>
 
 <script>
 import wepy from 'wepy'
 import Tips from '../util/Tips';
-import WxUtils from '../util/WxUtils';
 
 export default class Index extends wepy.page {
   config = {
@@ -26,6 +48,7 @@ export default class Index extends wepy.page {
     
   }
   data = {
+  loaded:true
   }
   onLoad() {
   }
@@ -46,6 +69,7 @@ export default class Index extends wepy.page {
             return;
           }
           Tips.alert(''+result);
+          //const that=this;
           this.$root.$navigate('browser?q='+encodeURIComponent(result));
         } finally {
           Tips.loaded();

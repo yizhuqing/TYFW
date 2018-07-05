@@ -7,31 +7,31 @@
 </style>
 
 <script>
-import wepy from 'wepy'
-import 'wepy-async-function'
+  import wepy from 'wepy'
+  import 'wepy-async-function'
 
-export default class extends wepy.app {
+  export default class extends wepy.app {
   config = {
-    pages: [
-      'pages/index',
-      'pages/browser'
-    ],
-      window: {
-        backgroundTextStyle: 'dark',
-        backgroundColor: '#F5F5F5',
-        navigationBarBackgroundColor: '#1296db'
-      },
+  pages: [
+  'pages/index',
+  'pages/browser'
+  ],
+  window: {
+  backgroundTextStyle: 'dark',
+  backgroundColor: '#1852A4',
+  navigationBarBackgroundColor: '#1296db'
+  },
   }
 
   globalData = {
-    userInfo: null
+  userInfo: null
   }
 
   constructor () {
-    super()
-      // 注册中间件
-      this.use('promisify');
-      this.use('requestfix')
+  super()
+  // 注册中间件
+  this.use('promisify');
+  this.use('requestfix')
   }
-}
+  }
 </script>

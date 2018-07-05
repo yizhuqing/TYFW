@@ -1,32 +1,34 @@
+
 <template>
-        <web-view src="{{url}}" ></web-view>
+  <web-view src="{{url}}"></web-view>
 </template>
 
 <script>
   import wepy from 'wepy';
 
   export default class Browser extends wepy.page {
-      data = {
-          url:''
-      };
+  data = {
+  
+  url:''
+  };
 
-      async onLoad (options) {
-          console.log('Browser',options);
-          if(options.url)
-          {
-              this.url=decodeURIComponent(options.url);
-          }else if(options.q)
-          {
-              this.url=decodeURIComponent(options.q);
-          }
-          console.log('url',this.url);
-      };
-    
-      methods = {
-    }
-    config = {
-      navigationBarTitleText: '加载中'
-    };
+  async onLoad (options) {
+  console.log('Browser',options);
+  if(options.url)
+  {
+  this.url=decodeURIComponent(options.url);
+  }else if(options.q)
+  {
+  this.url=decodeURIComponent(options.q);
+  }
+  console.log('url',this.url);
+  };
+
+  methods = {
+  }
+  config = {
+  navigationBarTitleText: '加载中'
+  };
 
   }
 </script>
