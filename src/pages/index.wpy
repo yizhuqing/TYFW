@@ -56,7 +56,7 @@ export default class Index extends wepy.page {
   }
   methods={
       async fw() {
-          this.$root.$navigate('browser?q='+encodeURIComponent("http://www.hf315.cn/fangwei"));
+          this.$root.$navigate('browser?q='+encodeURIComponent("https://www.hf315.cn/fangwei"));
       },
       async scan() {
         try {

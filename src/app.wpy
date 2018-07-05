@@ -19,7 +19,7 @@
   window: {
   backgroundTextStyle: 'dark',
   backgroundColor: '#1852A4',
-  navigationBarBackgroundColor: '#1296db'
+  navigationBarBackgroundColor: '#1852A4'
   },
   }
 
