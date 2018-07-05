@@ -1,0 +1,58 @@
+
+<template>
+<view class="page">
+        <view class="sys"  @tap="scan">
+          <text>扫一扫</text>
+        </view>
+        <view class="fw"  @tap="fw">
+          <text>防伪验真</text>
+        </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import Tips from '../util/Tips';
+import WxUtils from '../util/WxUtils';
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '天演溯源防伪平台',
+    window: {
+      enablePullDownRefresh: false
+    }
+  }
+  components = {
+    
+  }
+  data = {
+  }
+  onLoad() {
+  }
+  computed={
+  }
+  methods={
+      async fw() {
+          this.$root.$navigate('browser?q='+encodeURIComponent("http://www.hf315.cn/fangwei"));
+      },
+      async scan() {
+        try {
+          const data = await wepy.scanCode();
+          Tips.loading('扫描中');
+          console.info(data);
+          const {errMsg, path, result} = data;
+          if (errMsg != 'scanCode:ok') {
+            Tips.alert('扫描失败请重试');
+            return;
+          }
+          Tips.alert(''+result);
+          this.$root.$navigate('browser?q='+encodeURIComponent(result));
+        } finally {
+          Tips.loaded();
+        }
+      }
+    
+  }
+  mixins = [];
+}
+</script>

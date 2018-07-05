@@ -1,0 +1,15 @@
+{
+	"description": "天演防伪小程序",
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"appid": "wxa34b9f0579a9de35",
+	"projectname": "%E5%A4%A9%E6%BC%94%E9%98%B2%E4%BC%AA",
+	"miniprogramRoot": "./dist",
+	"condition": {}
+}

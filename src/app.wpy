@@ -1,0 +1,37 @@
+<style lang="scss" src="./styles/zent.scss"></style>
+<style lang="scss" src="./styles/base.scss"></style>
+
+<style lang="scss">
+  @import "./styles/weui";
+  @import "./styles/weui-extend";
+</style>
+
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+
+export default class extends wepy.app {
+  config = {
+    pages: [
+      'pages/index',
+      'pages/browser'
+    ],
+      window: {
+        backgroundTextStyle: 'dark',
+        backgroundColor: '#F5F5F5',
+        navigationBarBackgroundColor: '#1296db'
+      },
+  }
+
+  globalData = {
+    userInfo: null
+  }
+
+  constructor () {
+    super()
+      // 注册中间件
+      this.use('promisify');
+      this.use('requestfix')
+  }
+}
+</script>
