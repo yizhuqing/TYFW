@@ -5,25 +5,33 @@
 
 <script>
   import wepy from 'wepy';
+  import Tips from '../util/Tips';
 
   export default class Browser extends wepy.page {
   data = {
-  
   url:''
   };
 
   async onLoad (options) {
   console.log('Browser',options);
+  // 内部参数
   if(options.url)
   {
   this.url=decodeURIComponent(options.url);
   }else if(options.q)
   {
+  // 外部参数
+  Tips.loading('正在加载溯源信息...');
   this.url=decodeURIComponent(options.q);
+  setTimeout(function(){
+  Tips.loaded();
+  },3000);
   }
   console.log('url',this.url);
   };
-
+  onShareAppMessage(options) {
+  console.log(options.webViewUrl)
+  }
   methods = {
   }
   config = {

@@ -17,66 +17,78 @@
 </style>
 <template>
 <view class="page">
-      <image src="../images/loading.gif" wx:if="{{!loaded}}" class="loading"></image>
-      <view class="operation-box"  wx:if="{{loaded}}">
-      <view class="operation-row row-around" >
-        <view class="operation-row column-center"  @tap="scan">
-          <image src="/images/scan.png"/>
-          <text>扫一扫</text>
+      <image src="../images/loading.gif" wx:if="{{false}}" class="loading"></image>
+      <view class="operation-box"  >
+        <view class="operation-row row-around">
+          <view class="operation-row column-center" wx:if="{{openByScan}}" @tap="sy">
+            <image src="/images/scan.png" />
+            <text>链上溯源</text>
+          </view>
+          <view class="operation-row column-center" wx:if="{{true}}" @tap="scan">
+            <image src="/images/scan.png" />
+            <text>扫一扫</text>
+          </view>
+          <view class="operation-row column-center" @tap="fw">
+            <image src="/images/fw.png" />
+            <text>防伪验真</text>
+          </view>
         </view>
-        <view class="operation-row column-center"  @tap="fw">
-          <image src="/images/fw.png"/>
-          <text>防伪验真</text>
-        </view>
-       </view>
        </view>
   </view>
 </template>
 
 <script>
-import wepy from 'wepy'
-import Tips from '../util/Tips';
+  import wepy from 'wepy'
+  import Tips from '../util/Tips';
 
-export default class Index extends wepy.page {
+  export default class Index extends wepy.page {
   config = {
-    navigationBarTitleText: '天演溯源防伪平台',
-    window: {
-      enablePullDownRefresh: false
-    }
+  navigationBarTitleText: '天演溯源防伪平台',
+  window: {
+  enablePullDownRefresh: false
+  }
   }
   components = {
-    
+
   }
   data = {
-  loaded:true
+    openByScan: false,
+    q:''// 外部链接
   }
-  onLoad() {
+  onLoad(options) {
+    if(options.q)
+    {
+      this.openByScan = true;
+      this.q = options.q;
+    }
   }
   computed={
   }
   methods={
-      async fw() {
-          this.$root.$navigate('browser?q='+encodeURIComponent("https://www.hf315.cn/fangwei"));
-      },
-      async scan() {
-        try {
-          const data = await wepy.scanCode();
-          Tips.loading('扫描中');
-          console.info(data);
-          const {errMsg, path, result} = data;
-          if (errMsg != 'scanCode:ok') {
-            Tips.alert('扫描失败请重试');
-            return;
-          }
-          Tips.alert(''+result);
-          //const that=this;
-          this.$root.$navigate('browser?q='+encodeURIComponent(result));
-        } finally {
-          Tips.loaded();
-        }
+    async fw() {
+      this.$root.$navigate('browser?url='+encodeURIComponent("https://www.hf315.cn/fangwei"));
+    },
+    async sy() {
+      this.$root.$navigate('browser?q='+(this.q));
+    },
+    async scan() {
+      try {
+      const data = await wepy.scanCode();
+      Tips.loading('扫描中');
+      console.info(data);
+      const {errMsg, path, result} = data;
+      if (errMsg != 'scanCode:ok') {
+      Tips.alert('扫描失败请重试');
+      return;
       }
-    
+      Tips.alert(''+result);
+      //const that=this;
+      this.$root.$navigate('browser?q='+encodeURIComponent(result));
+      } finally {
+      Tips.loaded();
+      }
+    }
   }
   mixins = [];
-}
+  }
 </script>

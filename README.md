@@ -5,4 +5,4 @@
 ```npm install wepy-cli -g```
 
 ## 启动
-```wepy build --watch```
+双击执行“start.bat”文件
