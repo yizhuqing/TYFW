@@ -1,0 +1,86 @@
+<style lang="scss">
+  .container {
+  background-color: #1A2130;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  margin-top: 0px;
+  top: 0px;
+  justify-content: initial;
+  padding: 200rpx 0;
+  align-items: center;
+  box-sizing:border-box;
+
+  }
+
+
+  .img{width: 300px;height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -150px;
+  margin-left: -150px;
+  animation: imgshow 3s ;
+  -webkit-animation: imgshow 3s ;
+  }
+
+  .text {
+  color: #6E7FA4;
+  font-weight: bold;
+  font-size: 42rpx;
+  margin-top:0;
+  }
+
+  .success-text,.alert-text{position:absolute;
+  top:50%;
+  margin-top:140px;
+  }
+
+  .btn{position:absolute;width:90%;top:10px;}
+
+  @keyframes imgshow{
+  0% {
+  opacity:0
+  }
+  100% {
+  opacity:1
+  }
+  }
+</style>
+<template>
+  <view class="container">
+    <image class="img alert-img" src="/images/alert.png"></image>
+    <text class="text alert-text">{{alertText}}</text>
+    <button class="btn" type="default" plain="false" size="default" bindtap="indexView" hover-class="other-button-hover">返回首页</button>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import Tips from '../util/Tips';
+
+  export default class Show extends wepy.page {
+  config = {
+  navigationBarTitleText: '天演溯源防伪平台',
+  window: {
+  enablePullDownRefresh: false
+  }
+  }
+  //可用于页面模板绑定的数据
+  data = {
+
+  };
+
+  indexView() {
+  wx.redirectTo({
+  url: 'index',
+  })
+  };
+
+  //页面的生命周期函数
+  onLoad(options) {
+  this.setData({alertText:options.text});
+  };
+  }
+</script>

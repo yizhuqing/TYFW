@@ -11,7 +11,6 @@
   data = {
   url:''
   };
-
   async onLoad (options) {
   console.log('Browser',options);
   // 内部参数
@@ -21,7 +20,7 @@
   }else if(options.q)
   {
   // 外部参数
-  Tips.loading('正在加载溯源信息...');
+  Tips.loading('正在加载溯源');
   this.url=decodeURIComponent(options.q);
   setTimeout(function(){
   Tips.loaded();
@@ -37,6 +36,15 @@
   config = {
   navigationBarTitleText: '加载中'
   };
+
+  onHide() {
+  console.log("brower hidden ");
+  //wx.pauseBackgroundAudio();
+  }
+
+  onShow(){
+  console.log("brower show ");
+  }
 
   }
 </script>

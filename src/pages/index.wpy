@@ -52,42 +52,75 @@
 
   }
   data = {
-    openByScan: false,
-    q:''// 外部链接
+  openByScan: false,
+  q:''// 外部链接
   }
+
   onLoad(options) {
-    if(options.q)
-    {
-      this.openByScan = true;
-      this.q = options.q;
-    }
+  if(options.q)
+  {
+  this.openByScan = true;
+  this.q = options.q;
+  }
   }
   computed={
   }
   methods={
-    async fw() {
-      this.$root.$navigate('browser?url='+encodeURIComponent("https://www.hf315.cn/fangwei"));
-    },
-    async sy() {
-      this.$root.$navigate('browser?q='+(this.q));
-    },
-    async scan() {
-      try {
-      const data = await wepy.scanCode();
-      Tips.loading('扫描中');
-      console.info(data);
-      const {errMsg, path, result} = data;
-      if (errMsg != 'scanCode:ok') {
-      Tips.alert('扫描失败请重试');
-      return;
+  async fw() {
+  this.$root.$navigate('browser?url='+encodeURIComponent("https://www.hf315.cn/fangwei"));
+  },
+  async sy() {
+  this.$root.$navigate('browser?q='+(this.q));
+  },
+  async scan() {
+  try {
+
+  const data = await wepy.scanCode();
+  Tips.loading('扫描中');
+  console.info(data);
+  const {errMsg, path, result} = data;
+
+  if (errMsg != 'scanCode:ok') {
+  Tips.alert('扫描失败请重试');
+  return;
+  }
+  //不在白名单的域名
+  var domainArr = ['org315.cn', 'sy315.cn', 'hf315.cn', 'evo315.com'];
+  var isRightUrl = false;
+  for (let index = 0; index < domainArr.length; index++) {
+      result.indexOf(domainArr[index])
+      if (result.indexOf(domainArr[index]) > 0){
+        isRightUrl = true;
+        break;
       }
-      Tips.alert(''+result);
-      //const that=this;
-      this.$root.$navigate('browser?q='+encodeURIComponent(result));
-      } finally {
-      Tips.loaded();
-      }
+  }
+  console.log(isRightUrl);
+  if(!isRightUrl){
+    //Tips.error('该域名不支持溯源！');
+
+    //wx.showToast({
+    //  title: "域名不支持溯源",
+    //  image: '/images/icons/error.png',
+    //  mask: true,
+    //  duration: 2000
+    //});
+       wx.redirectTo({
+        url: 'alert?text='+'域名不支持溯源'
+      })
+    
+  }else{
+    //Tips.alert(''+result);
+    this.$root.$navigate('browser?q='+encodeURIComponent(result));
+  }
+
+  }catch (error) {
+       Tips.loaded();
     }
+  
+finally {
+  //Tips.loaded();
+  }
+  }
   }
   mixins = [];
   }
