@@ -79,7 +79,7 @@
   Tips.loading('扫描中');
   console.info(data);
   const {errMsg, path, result} = data;
-
+  //console.log(result);
   if (errMsg != 'scanCode:ok') {
   Tips.alert('扫描失败请重试');
   return;
@@ -96,21 +96,20 @@
   }
   console.log(isRightUrl);
   if(!isRightUrl){
-    //Tips.error('该域名不支持溯源！');
-
-    //wx.showToast({
-    //  title: "域名不支持溯源",
-    //  image: '/images/icons/error.png',
-    //  mask: true,
-    //  duration: 2000
-    //});
        wx.redirectTo({
         url: 'alert?text='+'域名不支持溯源'
       })
     
   }else{
     //Tips.alert(''+result);
-    this.$root.$navigate('browser?q='+encodeURIComponent(result));
+    if(result.indexOf('bz.htm') > 0 || result.indexOf('xm.htm') > 0){
+        wx.redirectTo({
+        url: 'show?q='+encodeURIComponent(result)
+        })
+    }else{
+      this.$root.$navigate('browser?q='+encodeURIComponent(result));
+    }
+    
   }
 
   }catch (error) {
