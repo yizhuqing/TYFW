@@ -3,8 +3,11 @@
     "",
     "\\src",
     "\\src\\images",
-    "\\src\\pages"
+    "\\src\\images\\icons",
+    "\\src\\pages",
+    "\\src\\styles",
+    "\\src\\util"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\src\\pages\\show.wpy",
   "PreviewInSolutionExplorer": false
 }

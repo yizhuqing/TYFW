@@ -5,6 +5,11 @@
       "taskName": "任务-project.config",
       "appliesTo": "project.config.json",
       "type": "launch"
+    },
+    {
+      "taskName": "任务-src",
+      "appliesTo": "src/",
+      "type": "launch"
     }
   ]
 }
