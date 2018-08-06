@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="190px" height="190px" viewBox="0 0 190 190" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>right</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="95" cy="95" r="91"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iPhone-8-Copy-2" transform="translate(-93.000000, -193.000000)">
+            <g id="right" transform="translate(93.000000, 193.000000)">
+                <circle id="Oval" stroke="#FFFFFF" stroke-width="4" fill="#30DE7E" fill-rule="nonzero" cx="95" cy="95" r="93"></circle>
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Oval-2" fill="#30DE7E" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <path d="M179.079739,129.870163 C166.127716,161.065175 136.320736,183.497638 101.02247,185.803884 L47.562855,93.2091144 L82.0677872,114.912231 L115.455803,81.2010781 L142.714185,66.8831762 L179.079739,129.870163 Z" id="Combined-Shape" fill-opacity="0.07" fill="#000000" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                <g id="勾" mask="url(#mask-2)" fill-rule="nonzero">
+                    <g transform="translate(45.000000, 45.000000)">
+                        <rect id="Rectangle-path" fill="#000000" opacity="0" x="0" y="0" width="100" height="100"></rect>
+                        <polygon id="Shape" fill="#FFFFFF" points="37 82.5 2.5 48 9.5 40.75 37 68.25 90.5 15 97.5 22"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -14,8 +14,8 @@
   config = {
   pages: [
   'pages/index',
-  'pages/show',
   'pages/alert',
+  'pages/show',
   'pages/browser'
   ],
   window: {

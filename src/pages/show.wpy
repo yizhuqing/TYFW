@@ -1,175 +1,161 @@
 <style lang="scss">
-  .container {
-  background-color: #1A2130;
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: 1;
-  margin-top: 0px;
-  top: 0px;
-  justify-content: initial;
-  padding: 200rpx 0;
-  align-items: center;
-  box-sizing:border-box;
-
-  }
-
-  #loading {
-  /* background-color: #db9e36; */
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: 1;
-  margin-top: 0px;
-  top: 0px;
-  }
-
-  #loading-center {
+  .container{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: inherit;
   width: 100%;
   height: 100%;
-  position: relative;
+  font-size: 12px;
+  background: #2E2E2E;
   }
-  .loading-center-absolute {
-  position:absolute;
-  left:50%;
-  top:50%;
-  height:256px;
-  width:256px;
-  margin-top:-128px;
-  margin-left:-128px;
 
-
+  .main{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
   }
-  #caseBlanche {
-  height: 256px;
-  width: 256px;
-  float: left;
-  position: relative;
-  }
-  #rond {
-  height: 256px;
-  width: 256px;
-  border: 3px solid rgba(255, 255,255, 0.1);
-  border-radius: 50%;
+  .cont{
   position: absolute;
-  animation: rond 3s infinite;
-  -webkit-animation: rond 3s infinite;
-  background: #1A2B41;
+  left: 0;
+  top: 45%;
+  -webkit-transform: translate(0,-50%);transform: translate(0,-50%);
+  width: 100%;
   }
-  #test {
-  height: 15px;
-  width: 15px;
+  .cont .bd{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  }
+  .cont .bd .checking{
   position: absolute;
-  background-color: rgba(1, 176,255, 0.9);
+  left: 5px;
+  top: 100px;
+  width: 190px;
+  height: 190px;
+  -webkit-transform: translate(0,-95px);transform: translate(0,-95px);
+  transition: all ease 0.3s;
+  }
+  .cont .bd .checking.out{
+  position: absolute;
+  top: 100px;
+  width: 190px;
+  height: 190px;
+  -webkit-transform: translate(0,-295px);transform: translate(0,-295px);
+  }
+  .cont .bd .rotate{
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  top: -8px;
-  left: 120.5px;
-  box-shadow:0px 0px 20px #0D8DFF;
+  animation: rotate 2s linear infinite;
   }
-  #load {
-  color:#fff;
-  font-family:calibri;
-  text-align:center;
-  position:absolute;
-  top:120px;
-  left:77px;
-
-
+  .cont .bd .inner{
+  position: absolute;
+  width: 182px;
+  height: 182px;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);transform: translate(-50%,-50%);
+  border-radius: 50%;
+  background: #0d162b;
+  line-height: 182px;
+  text-align: center;
+  color: #fff;
   }
-  @keyframes rond{
-  0% {
-  transform: rotate(0deg);
-  /* clip:rect(-5px,111px,10px,0px); */
-  border: 3px solid rgba(36, 30,59, 0.1);
-  }
-  100% {
-  transform: rotate(360deg);
-  border: 3px solid rgba(83, 80,232, 0.3);
-  /* clip:rect(-5px,111px,206px,0px); */
-  }
-  }
-
-  .load-info {
-  z-index: 100;color: #3577FE;font-weight: bold;text-shadow:1px 2px 8px;font-size: initial;
-  }
-
-  .img{width: 300px;height: 300px;
+  .cont .bd .right{
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-top: -150px;
-  margin-left: -150px;
-  animation: imgshow 3s ;
-  -webkit-animation: imgshow 3s ;
+  width: 190px;
+  height: 190px;
+  -webkit-transform: translate(-50%,150%);transform: translate(-50%,150%);
+  transition: all ease 0.3s;
   }
-
-  .text {
-  color: #6E7FA4;
-  font-weight: bold;
-  font-size: 42rpx;
-  margin-top:0;
+  .cont .bd .warning{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 190px;
+  height: 190px;
+  -webkit-transform: translate(-50%,150%);transform: translate(-50%,150%);
+  transition: all ease 0.3s;
+  }
+  .cont .bd .right.active,.cont .bd .warning.active{
+  -webkit-transform: translate(-50%,-50%);transform: translate(-50%,-50%);
+  }
+  .cont .result{
+  margin-top: 20px;
+  text-align: center;
+  color: #A0A0A0;
+  }
+  .foot{
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  }
+  @keyframes rotate
+  {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
   }
 
   .first-text {
-  color: #0C8DF4;
+  color:#30DE7E;
   padding: 0 5px;
-  font-size: 42rpx;
   }
 
   .alert-num {
-  color: #E6584E;
+  color: #EDA932;
   padding: 0 5px;
-  font-size: 42rpx;
+
   }
-  .success-text,.alert-text{position:absolute;
-  top:50%;
-  margin-top:100px;
-  }
-  .jg-text{padding: 0 5px;font-size: 36rpx;color:#fff}
-  .rz-text{margin-top:0;font-size: 36rpx;display:inline-block;}
+  .jg-text{padding: 0 5px;color:#fff}
+  .rz-text{margin-top:0;display:inline-block;color:#A0A0A0;}
   .safe-img{width:17px;height: 17px; position: relative;top:3px;padding-right: 5px;}
-  .rz-view{position: absolute;bottom: 10px;}
-
-  @keyframes imgshow{
-  0% {
-  opacity:0
-  }
-  100% {
-  opacity:1
-  }
-  }
-
+  .rz-view{position: absolute;bottom: 10px;width:100%;text-align:center;left:0;}
 </style>
 <template>
   <view class="container">
-    <view id="loading" hidden="{{loadingHidden}}">
-      <view id="loading-center">
-        <view id="caseBlanche " class="loading-center-absolute">
-          <view id="rond">
-            <view id="test"></view>
+    <view class="main">
+      <view class="cont">
+        <view class="bd">
+          <view class="checking" id="checking" hidden="{{loadingHidden}}">
+            <view class="rotate">
+              <image src="/images/Oval.png" alt="" style="width: 190px;height: 190px;" ></image>
+            </view>
+            <view class="inner">
+              天演正在为您检测
+            </view>
           </view>
-          <view id="load">
-            <text class="load-info">正在为您检测...</text>
+          <view class="right {{rightClass}}" id="right">
+            <image src="/images/right.svg" alt="" style="width: 190px;height: 190px;" ></image>
+          </view>
+          <view class="warning {{alertClass}}" id="warning">
+            <image src="/images/warning.svg" alt="" style="width: 190px;height: 190px;" ></image>
           </view>
         </view>
+
+        <view class="result success-text" hidden="{{successHidden}}">
+          您是该产品的<text class="first-text">首次</text>扫码用户
+        </view>
+        <view class="result alert-text" hidden="{{alertHidden}}">
+          已被扫码<text class='alert-num'>{{smNum}}次</text>谨防假冒
+        </view>
       </view>
-    </view>
-    <image class="img success-img" src="/images/success.png" hidden="{{successHidden}}"></image>
-    <text class="text success-text" hidden="{{successHidden}}">
-      您是该产品的<text class="first-text">首次</text>扫码用户
-    </text>
-    <image class="img alert-img" src="/images/alert.png" hidden="{{alertHidden}}"></image>
-    <text class="text alert-text" hidden="{{alertHidden}}">
-      已被扫码<text class='alert-num'>{{smNum}}次</text>谨防假冒
-    </text>
-    <view hidden="{{jgHidden}}" class='rz-view'>
-      <image class="safe-img" src="/images/safe.png"></image>
-      <text class="text rz-text">
-        该结果由<text class="jg-text">{{jgName}}</text>认证
-      </text>
+      <view hidden="{{jgHidden}}" class='rz-view'>
+        <image class="safe-img" src="/images/safe.png"></image>
+        <text class="text rz-text">
+          该结果由<text class="jg-text">{{jgName}}</text>认证
+        </text>
+      </view>
+
     </view>
   </view>
-
     
 </template>
 
@@ -189,7 +175,9 @@
   loadingHidden: false,
   alertHidden: true,
   successHidden: true,
-  jgHidden:true
+  jgHidden:true,
+  rightClass:"",
+  alertClass:""
   };
 
   //页面的生命周期函数
@@ -230,13 +218,15 @@
   loadingHidden: true,
   alertHidden: false,
   successHidden: true,
-  smNum: scanNum
+  smNum: scanNum,
+  alertClass:"active"
   });
   }else{
   that.setData({
   loadingHidden: true,
   alertHidden: true,
-  successHidden: false
+  successHidden: false,
+  rightClass:"active"
   });
   }
 

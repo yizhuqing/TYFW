@@ -1,39 +1,82 @@
 <style>
-  
-  /*操作区域*/
-  .operation-box{
-    background-color: #FFFCFC;
-    margin-bottom: 20rpx;
-    padding-top:400rpx;
-    padding-bottom: 35rpx;
-    border-bottom: $border;
-
+  .page{
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  background: url('./images/bg.png') center no-repeat;
+  background-size: cover;
   }
-   .operation-box image{
-      height: 90rpx;
-      width: 90rpx;
-    }
-  .loading{width:100%;height:500px}
+  .main{
+  width: 100%;
+  height: 100%;
+  background: rgba(14,127,188,.8);
+  padding: 10px;
+  }
+  .cont{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translate(0,-50%);transform: translate(0,-50%);
+  width: 100%;
+  }
+  .cont view{
+  display: block;
+  width: 190px;
+  height: 190px;
+  margin: 0 auto;
+  border-radius: 50%;
+  outline: none;
+  text-align: center;
+  line-height: 190px;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-user-select: none;
+  -moz-user-focus: none;
+  -moz-user-select: none;
+  }
+
+  .cont .scan image{
+  width:121px;
+  height:136px;
+  }
+  .cont .ani-fake{
+  margin-top: 40px;
+  }
+  .cont .ani-fake image{
+  width:102px;
+  height:136px;
+  }
+  .cont view image{
+  vertical-align: middle;
+  }
+  .cont view:active{
+  border: 2px solid #fff;
+  }
+  .foot{
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  }
+  .logo{width:113px;height:19px;}
 </style>
 <template>
-<view class="page">
-      <image src="../images/loading.gif" wx:if="{{false}}" class="loading"></image>
-      <view class="operation-box"  >
-        <view class="operation-row row-around">
-          <view class="operation-row column-center" wx:if="{{openByScan}}" @tap="sy">
-            <image src="/images/scan.png" />
-            <text>链上溯源</text>
-          </view>
-          <view class="operation-row column-center" wx:if="{{true}}" @tap="scan">
-            <image src="/images/scan.png" />
-            <text>扫一扫</text>
-          </view>
-          <view class="operation-row column-center" @tap="fw">
-            <image src="/images/fw.png" />
-            <text>防伪验真</text>
-          </view>
+
+  <view class="page">
+    <view class="main">
+        <image class="logo" src="/images/logo-w.svg" alt=""></image>
+      <view class="cont">
+        <view class="scan" wx:if="{{true}}" @tap="scan">
+          <image src="/images/scan.svg"></image>
         </view>
-       </view>
+        <view class="ani-fake" @tap="fw">
+          <image src="/images/ani-fake.svg"></image>
+        </view>
+        
+      </view>
+      <!--<view class="foot">天演防伪溯源平台</view>-->
+    </view>
   </view>
 </template>
 

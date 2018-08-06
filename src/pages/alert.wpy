@@ -1,58 +1,128 @@
 <style lang="scss">
-  .container {
-  background-color: #1A2130;
-  height: 100%;
+  .container{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: inherit;
   width: 100%;
-  position: fixed;
-  z-index: 1;
-  margin-top: 0px;
-  top: 0px;
-  justify-content: initial;
-  padding: 200rpx 0;
-  align-items: center;
-  box-sizing:border-box;
-
+  height: 100%;
+  font-size: 12px;
+  background: #2E2E2E;
   }
 
-
-  .img{width: 300px;height: 300px;
+  .main{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  }
+  .cont{
+  position: absolute;
+  left: 0;
+  top: 45%;
+  -webkit-transform: translate(0,-50%);transform: translate(0,-50%);
+  width: 100%;
+  }
+  .cont .bd{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  }
+  .cont .bd .checking{
+  position: absolute;
+  left: 5px;
+  top: 100px;
+  width: 190px;
+  height: 190px;
+  -webkit-transform: translate(0,-95px);transform: translate(0,-95px);
+  transition: all ease 0.3s;
+  }
+  .cont .bd .checking.out{
+  position: absolute;
+  top: 100px;
+  width: 190px;
+  height: 190px;
+  -webkit-transform: translate(0,-295px);transform: translate(0,-295px);
+  }
+  .cont .bd .rotate{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: rotate 2s linear infinite;
+  }
+  .cont .bd .inner{
+  position: absolute;
+  width: 182px;
+  height: 182px;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);transform: translate(-50%,-50%);
+  border-radius: 50%;
+  background: #0d162b;
+  line-height: 182px;
+  text-align: center;
+  color: #fff;
+  }
+  .cont .bd .right{
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-top: -150px;
-  margin-left: -150px;
-  animation: imgshow 3s ;
-  -webkit-animation: imgshow 3s ;
+  width: 190px;
+  height: 190px;
+  -webkit-transform: translate(-50%,150%);transform: translate(-50%,150%);
+  transition: all ease 0.3s;
   }
-
-  .text {
-  color: #6E7FA4;
-  font-weight: bold;
-  font-size: 42rpx;
-  margin-top:0;
+  .cont .bd .warning{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 190px;
+  height: 190px;
+  -webkit-transform: translate(-50%,150%);transform: translate(-50%,150%);
+  transition: all ease 0.3s;
   }
-
-  .success-text,.alert-text{position:absolute;
-  top:50%;
-  margin-top:140px;
+  .cont .bd .right.active,.cont .bd .warning.active{
+  -webkit-transform: translate(-50%,-50%);transform: translate(-50%,-50%);
   }
-
-  .btn{position:absolute;width:90%;top:10px;}
-
-  @keyframes imgshow{
-  0% {
-  opacity:0
+  .cont .result{
+  margin-top: 20px;
+  text-align: center;
+  color: #A0A0A0;
   }
-  100% {
-  opacity:1
+  .foot{
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
   }
+  @keyframes rotate
+  {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
   }
+  .btn{text-align:center;width:100%;position:absolute;;top:10px;}
+  .btn button{width:90%;border-color:#A0A0A0!important;color:#A0A0A0!important;display:inline-block;}
 </style>
 <template>
   <view class="container">
-    <image class="img alert-img" src="/images/alert.png"></image>
-    <text class="text alert-text">{{alertText}}</text>
-    <button class="btn" type="default" plain="false" size="default" bindtap="indexView" hover-class="other-button-hover">返回首页</button>
+    <view class="main">
+      <view class="cont">
+        <view class="bd">
+          <view class="warning {{alertClass}}" id="warning">
+            <image src="/images/warning.svg" alt="" style="width: 190px;height: 190px;" ></image>
+          </view>
+        </view>
+        <view class="result alert-text">{{alertText}}</view>
+      </view>
+      
+    </view>
+    
+  </view>
+  <view class="btn">
+  <button type="default" plain="false" bindtap="indexView" hover-class="other-button-hover">返回首页</button>
   </view>
 </template>
 
@@ -80,7 +150,7 @@
 
   //页面的生命周期函数
   onLoad(options) {
-  this.setData({alertText:options.text});
+  this.setData({alertText:options.text,alertClass:"active"});
   };
   }
 </script>
