@@ -119,8 +119,8 @@
   try {
 
   const data = await wepy.scanCode();
-  Tips.loading('扫描中');
-  console.info(data);
+  //Tips.loading('扫描中');
+  //console.info(data);
   const {errMsg, path, result} = data;
   //console.log(result);
   if (errMsg != 'scanCode:ok') {
@@ -146,7 +146,7 @@
   }else{
     //Tips.alert(''+result);
     if(result.indexOf('bz.htm') > 0 || result.indexOf('xm.htm') > 0){
-        wx.redirectTo({
+        wx.navigateTo({
         url: 'show?q='+encodeURIComponent(result)
         })
     }else{
