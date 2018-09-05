@@ -2,12 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\images",
-    "\\src\\images\\icons",
     "\\src\\pages",
-    "\\src\\styles",
     "\\src\\util"
   ],
-  "SelectedNode": "\\src\\pages\\show.wpy",
+  "SelectedNode": "\\src\\pages\\index.wpy",
   "PreviewInSolutionExplorer": false
 }
