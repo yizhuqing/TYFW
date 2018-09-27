@@ -189,6 +189,7 @@
   if(link.indexOf('bz.htm') > 0){
   console.log('bz');
   //包装
+  var addressPrefix = link.split('bz.htm')[0];
   var paramArr = link.split('=');
   console.log(paramArr);
   var code = "";
@@ -199,7 +200,7 @@
 
 
   wx.request({
-  url: 'https://testtz.sy315.cn/demo1/api/code/getcodeinfo',
+  url:  addressPrefix +  'api/code/getcodeinfo',
   data: { code:code},
   success: function (data) {
   console.log(data);
